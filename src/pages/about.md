@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "О блоге"
+title: "About"
 ---
 
 This is a cat's blog.  

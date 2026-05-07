@@ -2,8 +2,8 @@ export const SITE = {
   website: "https://blog.itskoshkin.ru/",
   author: "itskoshkin",
   profile: "https://itskoshkin.ru/",
-  desc: "Блог про всякие штуки",
-  title: "Кошкин блог",
+  desc: "Bits and pieces of writing",
+  title: "Koshkin blog",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 6,
@@ -18,6 +18,6 @@ export const SITE = {
   },
   dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
-  lang: "ru", // html lang code
+  lang: "en", // html lang code
   timezone: "Europe/Moscow", // https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 } as const;

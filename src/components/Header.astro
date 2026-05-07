@@ -3,6 +3,7 @@ import IconX from "@/assets/icons/IconX.svg";
 import IconMoon from "@/assets/icons/IconMoon.svg";
 import IconSearch from "@/assets/icons/IconSearch.svg";
 import IconArchive from "@/assets/icons/IconArchive.svg";
+import IconLanguage from "@/assets/icons/IconLanguage.svg";
 import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
@@ -25,6 +26,7 @@ const isActive = (path: string) => {
 <a
   id="skip-to-content"
   href="#main-content"
+  data-i18n="skip.toContent"
   class="absolute start-16 -top-full z-50 rounded-sm border border-border bg-surface px-3 py-2 font-ui text-sm text-accent shadow-(--shadow-soft) backdrop-blur-lg transition-all focus:top-4"
 >
   Skip to content
@@ -44,6 +46,7 @@ const isActive = (path: string) => {
   >
     <a
       href="/"
+      data-i18n="site.title"
       class="py-1 font-display text-2xl leading-none font-light whitespace-nowrap text-foreground transition-colors hover:text-accent sm:text-3xl"
     >
       {SITE.title}
@@ -65,30 +68,42 @@ const isActive = (path: string) => {
       <ul
         id="menu-items"
         class:list={[
-          "absolute top-14 right-0 z-50 mt-3 grid w-56 grid-cols-2 place-content-center gap-1 rounded-sm border border-border bg-surface p-3 shadow-(--shadow-soft)",
+          "absolute top-14 right-0 z-50 mt-3 grid w-56 grid-cols-3 place-content-center gap-1 rounded-sm border border-border bg-surface p-3 shadow-(--shadow-soft)",
           "[&>li>a]:relative [&>li>a]:block [&>li>a]:rounded-sm [&>li>a]:px-4 [&>li>a]:py-3 [&>li>a]:text-center [&>li>a]:text-foreground-muted [&>li>a]:transition-colors [&>li>a]:hover:text-accent sm:[&>li>a]:px-0 sm:[&>li>a]:py-1",
           "hidden",
           "sm:static sm:mt-0 sm:flex sm:w-auto sm:grid-cols-none sm:gap-x-6 sm:gap-y-0 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none",
         ]}
       >
-        <li class="col-span-2">
-          <a href="/posts" class:list={{ "active-nav": isActive("/posts") }}>
-            Записи
+        <li class="col-span-3">
+          <a
+            href="/posts"
+            data-i18n="nav.posts"
+            class:list={{ "active-nav": isActive("/posts") }}
+          >
+            Posts
           </a>
         </li>
-        <li class="col-span-2">
-          <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
-            Темы
+        <li class="col-span-3">
+          <a
+            href="/tags"
+            data-i18n="nav.tags"
+            class:list={{ "active-nav": isActive("/tags") }}
+          >
+            Tags
           </a>
         </li>
-        <li class="col-span-2">
-          <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
-            О блоге
+        <li class="col-span-3">
+          <a
+            href="/about"
+            data-i18n="nav.about"
+            class:list={{ "active-nav": isActive("/about") }}
+          >
+            About
           </a>
         </li>
         {
           SITE.showArchives && (
-            <li class="col-span-2">
+            <li class="col-span-3">
               <LinkButton
                 href="/archives"
                 class:list={[
@@ -98,10 +113,14 @@ const isActive = (path: string) => {
                   },
                 ]}
                 title="Archives"
+                data-i18n-title="nav.archives"
+                data-i18n-aria-label="nav.archives"
                 aria-label="archives"
               >
                 <IconArchive class="hidden sm:inline-block" />
-                <span class="sm:sr-only">Archives</span>
+                <span class="sm:sr-only" data-i18n="nav.archives">
+                  Archives
+                </span>
               </LinkButton>
             </li>
           )
@@ -115,10 +134,12 @@ const isActive = (path: string) => {
               { "text-accent [&>svg]:stroke-accent": isActive("/search") },
             ]}
             title="Search"
+            data-i18n-title="nav.search"
+            data-i18n-aria-label="nav.search"
             aria-label="search"
           >
             <IconSearch />
-            <span class="sr-only">Search</span>
+            <span class="sr-only" data-i18n="nav.search">Search</span>
           </LinkButton>
         </li>
         {
@@ -128,6 +149,8 @@ const isActive = (path: string) => {
                 id="theme-btn"
                 class="focus-outline relative size-12 rounded-sm p-4 text-foreground-muted transition-colors hover:text-accent sm:size-8"
                 title="Toggles light & dark"
+                data-i18n-title="theme.toggle"
+                data-i18n-aria-label="theme.toggle"
                 aria-label="auto"
                 aria-live="polite"
               >
@@ -137,6 +160,46 @@ const isActive = (path: string) => {
             </li>
           )
         }
+        <li class="relative col-span-1 flex items-center justify-center">
+          <button
+            id="language-btn"
+            class="focus-outline flex items-center justify-center rounded-sm p-3 text-foreground-muted transition-colors hover:text-accent sm:p-1"
+            title="Language"
+            data-i18n-title="nav.language"
+            data-i18n-aria-label="nav.language"
+            aria-label="Language"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-controls="language-menu"
+          >
+            <IconLanguage aria-hidden="true" class="scale-110" />
+            <span class="sr-only" data-i18n="nav.language">Language</span>
+          </button>
+          <div
+            id="language-menu"
+            class="absolute top-12 right-0 z-50 hidden min-w-36 rounded-sm border border-border bg-surface p-2 text-left tracking-normal normal-case shadow-(--shadow-soft) sm:top-9"
+            role="listbox"
+          >
+            <button
+              type="button"
+              class="block w-full rounded-sm px-3 py-2 text-left text-foreground-muted transition-colors hover:text-accent"
+              data-language-option="en"
+              data-i18n="language.english"
+              role="option"
+            >
+              English
+            </button>
+            <button
+              type="button"
+              class="block w-full rounded-sm px-3 py-2 text-left text-foreground-muted transition-colors hover:text-accent"
+              data-language-option="ru"
+              data-i18n="language.russian"
+              role="option"
+            >
+              Русский
+            </button>
+          </div>
+        </li>
       </ul>
     </nav>
   </div>

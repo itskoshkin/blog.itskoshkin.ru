@@ -5,11 +5,20 @@ import { SITE } from "@/config";
 type StringTitle = { pageTitle: string };
 type ArrayTitle = { pageTitle: [string, string]; titleTransition: string };
 
-type Props = (StringTitle | ArrayTitle) & { pageDesc?: string };
+type Props = (StringTitle | ArrayTitle) & {
+  pageDesc?: string;
+  pageTitleKey?: string;
+  pageTitleFirstKey?: string;
+  pageDescKey?: string;
+  i18nValues?: Record<string, string>;
+};
 
 const { props } = Astro;
 
 const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
+const i18nValues = props.i18nValues
+  ? JSON.stringify(props.i18nValues)
+  : undefined;
 ---
 
 <Breadcrumb />
@@ -17,18 +26,26 @@ const backUrl = SITE.showBackButton ? Astro.url.pathname : "/";
   {
     "titleTransition" in props ? (
       <h1 class="mt-8 font-display text-4xl leading-[1.04] font-light text-foreground sm:text-6xl">
-        {props.pageTitle[0]}
+        <span data-i18n={props.pageTitleFirstKey}>{props.pageTitle[0]}</span>
         <span transition:name={props.titleTransition}>
           {props.pageTitle[1]}
         </span>
       </h1>
     ) : (
-      <h1 class="mt-8 font-display text-4xl leading-[1.04] font-light text-foreground sm:text-6xl">
+      <h1
+        class="mt-8 font-display text-4xl leading-[1.04] font-light text-foreground sm:text-6xl"
+        data-i18n={props.pageTitleKey}
+        data-i18n-values={i18nValues}
+      >
         {props.pageTitle}
       </h1>
     )
   }
-  <p class="mt-3 mb-10 max-w-2xl font-ui text-sm text-foreground-muted">
+  <p
+    class="mt-3 mb-10 max-w-2xl font-ui text-sm text-foreground-muted"
+    data-i18n={props.pageDescKey}
+    data-i18n-values={i18nValues}
+  >
     {props.pageDesc}
   </p>
   <slot />

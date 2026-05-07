@@ -18,9 +18,14 @@ export const getStaticPaths = (async ({ paginate }) => {
 const { page } = Astro.props;
 ---
 
-<Layout title={`Записи | ${SITE.title}`}>
+<Layout title={`Posts | ${SITE.title}`}>
   <Header />
-  <Main pageTitle="Записи" pageDesc="Все опубликованные заметки.">
+  <Main
+    pageTitle="Posts"
+    pageDesc="All published notes."
+    pageTitleKey="page.posts.title"
+    pageDescKey="page.posts.desc"
+  >
     <ul class="mt-6">
       {page.data.map(data => <Card {...data} />)}
     </ul>

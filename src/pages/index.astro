@@ -31,14 +31,16 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
     >
       <div>
         <h1
+          data-i18n="site.title"
           class="max-w-3xl font-display text-5xl leading-[0.98] font-light text-foreground sm:text-7xl"
         >
-          Кошкин блог
+          Koshkin blog
         </h1>
         <p
+          data-i18n="site.desc"
           class="mt-6 max-w-2xl text-2xl leading-snug text-foreground-muted sm:text-3xl"
         >
-          Тут пишутся всякие штуки.
+          Bits and pieces of writing.
         </p>
       </div>
       <div class="flex flex-col gap-5 sm:items-end">
@@ -59,7 +61,10 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         {
           SOCIALS.length > 0 && (
             <div class="flex flex-col gap-2 sm:items-end">
-              <div class="font-ui text-xs tracking-[0.08em] text-foreground-muted uppercase">
+              <div
+                data-i18n="home.links"
+                class="font-ui text-xs tracking-[0.08em] text-foreground-muted uppercase"
+              >
                 Links
               </div>
               <Socials />
@@ -79,7 +84,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
           ]}
         >
           <h2 class="font-display text-4xl leading-tight font-light text-foreground">
-            Избранное
+            <span data-i18n="home.featured">Featured</span>
           </h2>
           <ul class="mt-6">
             {featuredPosts.map(data => (
@@ -94,7 +99,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-14 pb-7">
           <h2 class="font-display text-4xl leading-tight font-light text-foreground">
-            Последние записи
+            <span data-i18n="home.recent">Recent Posts</span>
           </h2>
           <ul class="mt-6">
             {recentPosts.map(
@@ -111,7 +116,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         href="/posts/"
         class="rounded-full border border-border bg-surface/75 px-5 py-2 text-foreground-muted shadow-(--shadow-soft) hover:border-accent/40"
       >
-        Все записи
+        <span data-i18n="home.allPosts">All Posts</span>
         <IconArrowRight class="inline-block rtl:-rotate-180" />
       </LinkButton>
     </div>
