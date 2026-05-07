@@ -2,7 +2,7 @@ export const SITE = {
   website: "https://blog.itskoshkin.ru/",
   author: "itskoshkin",
   profile: "https://itskoshkin.ru/",
-  desc: "Some cat's blog",
+  desc: "Блог про всякие штуки",
   title: "Кошкин блог",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,

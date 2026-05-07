@@ -1,8 +1,8 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "О блоге"
 ---
 
 This is a cat's blog.  
 No, it is not written by actual cat.  
-One day there will be content.  
+One day there will be content.

@@ -99,7 +99,7 @@ export default async post => {
       type: "div",
       props: {
         style: {
-          background: "#fefbfb",
+          background: "#f5efe4",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -112,17 +112,16 @@ export default async post => {
             props: {
               style: {
                 position: "absolute",
-                top: "-1px",
-                right: "-1px",
-                border: "4px solid #000",
-                background: "#ecebeb",
+                top: "52px",
+                right: "54px",
+                border: "2px solid #d9cbbb",
+                background: "#efe7da",
                 opacity: "0.9",
-                borderRadius: "4px",
+                borderRadius: "8px",
                 display: "flex",
                 justifyContent: "center",
-                margin: "2.5rem",
-                width: "88%",
-                height: "80%",
+                width: "86%",
+                height: "76%",
               },
             },
           },
@@ -130,14 +129,13 @@ export default async post => {
             type: "div",
             props: {
               style: {
-                border: "4px solid #000",
-                background: "#fefbfb",
-                borderRadius: "4px",
+                border: "2px solid #d9cbbb",
+                background: "#fcfbf7",
+                borderRadius: "8px",
                 display: "flex",
                 justifyContent: "center",
-                margin: "2rem",
-                width: "88%",
-                height: "80%",
+                width: "86%",
+                height: "76%",
               },
               children: {
                 type: "div",
@@ -155,8 +153,11 @@ export default async post => {
                       type: "p",
                       props: {
                         style: {
-                          fontSize: 72,
-                          fontWeight: "bold",
+                          fontFamily: "Canela Deck, Georgia",
+                          fontSize: 82,
+                          fontWeight: 400,
+                          lineHeight: 1.02,
+                          color: "#35312b",
                           maxHeight: "84%",
                           overflow: "hidden",
                         },
@@ -171,7 +172,10 @@ export default async post => {
                           justifyContent: "space-between",
                           width: "100%",
                           marginBottom: "8px",
+                          fontFamily: "Canela Text, Georgia",
                           fontSize: 28,
+                          fontWeight: 300,
+                          color: "#756f66",
                         },
                         children: [
                           {
@@ -191,7 +195,8 @@ export default async post => {
                                   props: {
                                     style: {
                                       overflow: "hidden",
-                                      fontWeight: "bold",
+                                      fontWeight: 500,
+                                      color: "#8b1e52",
                                     },
                                     children: post.data.author,
                                   },
@@ -202,7 +207,11 @@ export default async post => {
                           {
                             type: "span",
                             props: {
-                              style: { overflow: "hidden", fontWeight: "bold" },
+                              style: {
+                                overflow: "hidden",
+                                fontWeight: 500,
+                                color: "#8b1e52",
+                              },
                               children: SITE.title,
                             },
                           },

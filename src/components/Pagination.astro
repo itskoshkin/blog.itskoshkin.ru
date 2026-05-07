@@ -15,27 +15,33 @@ const { page } = Astro.props;
 {
   page.lastPage > 1 && (
     <nav
-      class="mt-auto mb-8 flex justify-center"
+      class="mt-auto mb-10 flex items-center justify-center font-ui text-sm text-foreground-muted"
       role="navigation"
       aria-label="Pagination Navigation"
     >
       <LinkButton
         disabled={!page.url.prev}
         href={page.url.prev as string}
-        class:list={["me-4 select-none", { "opacity-50": !page.url.prev }]}
+        class:list={[
+          "me-4 rounded-full border border-border bg-surface/75 px-4 py-2 shadow-(--shadow-soft) select-none",
+          { "opacity-50": !page.url.prev },
+        ]}
         aria-label="Goto Previous Page"
       >
         <IconArrowLeft class="inline-block rtl:rotate-180" />
-        Prev
+        Назад
       </LinkButton>
       {page.currentPage} / {page.lastPage}
       <LinkButton
         disabled={!page.url.next}
         href={page.url.next as string}
-        class:list={["ms-4 select-none", { "opacity-50": !page.url.next }]}
+        class:list={[
+          "ms-4 rounded-full border border-border bg-surface/75 px-4 py-2 shadow-(--shadow-soft) select-none",
+          { "opacity-50": !page.url.next },
+        ]}
         aria-label="Goto Next Page"
       >
-        Next
+        Вперед
         <IconArrowRight class="inline-block rtl:rotate-180" />
       </LinkButton>
     </nav>

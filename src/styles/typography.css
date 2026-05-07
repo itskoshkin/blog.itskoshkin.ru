@@ -4,6 +4,10 @@
   /* ===== Override default Tailwind Typography styles ===== */
   .app-prose {
     @apply prose;
+    max-width: 44rem;
+    font-family: var(--font-body-copy);
+    font-size: clamp(1.08rem, 1rem + 0.25vw, 1.22rem);
+    line-height: 1.72;
 
     h1,
     h2,
@@ -11,6 +15,23 @@
     h4,
     th {
       @apply mb-3 text-foreground;
+      font-family: var(--font-display);
+      font-weight: 300;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 1.7rem + 3vw, 4.8rem);
+    }
+
+    h2 {
+      font-size: clamp(1.85rem, 1.4rem + 1.8vw, 3rem);
+      margin-top: 2.4em;
+    }
+
+    h3 {
+      font-size: clamp(1.45rem, 1.18rem + 1vw, 2.1rem);
     }
 
     h3 {
@@ -27,8 +48,16 @@
       @apply text-foreground;
     }
 
+    p,
+    ol,
+    ul {
+      margin-top: 1.05em;
+      margin-bottom: 1.05em;
+    }
+
     a {
-      @apply wrap-break-word text-foreground decoration-dashed underline-offset-4 hover:text-accent focus-visible:no-underline;
+      @apply wrap-break-word text-accent decoration-dashed underline-offset-4 hover:text-accent-strong focus-visible:no-underline;
+      text-decoration-thickness: 1px;
     }
 
     ul {
@@ -41,20 +70,23 @@
 
     hr {
       @apply border-border;
+      margin-block: 2.5rem;
     }
 
     img {
-      @apply mx-auto border border-border;
+      @apply mx-auto rounded-sm border border-border shadow-(--shadow-soft);
     }
 
     figcaption {
-      @apply opacity-75;
+      @apply font-ui text-sm text-foreground-muted opacity-100;
     }
 
     table {
+      @apply font-ui text-sm;
+
       th,
       td {
-        @apply border border-border p-2;
+        @apply border border-border bg-surface/55 p-3;
       }
 
       th {
@@ -67,7 +99,7 @@
     }
 
     code {
-      @apply rounded bg-muted/75 p-1 wrap-break-word text-foreground before:content-none after:content-none;
+      @apply rounded-sm border border-border bg-surface px-1.5 py-0.5 font-mono text-[0.86em] wrap-break-word text-foreground before:content-none after:content-none;
     }
 
     .astro-code code {
@@ -75,7 +107,8 @@
     }
 
     blockquote {
-      @apply border-s-accent/80 wrap-break-word opacity-80;
+      @apply border-s-accent/80 bg-surface/50 py-1 ps-6 wrap-break-word text-foreground-muted opacity-100;
+      font-style: italic;
     }
 
     details {
@@ -93,7 +126,7 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
-    @apply flex border bg-(--shiki-light-bg) text-(--shiki-light) outline-border [&_span]:text-(--shiki-light);
+    @apply flex rounded-sm border bg-(--shiki-light-bg) text-(--shiki-light) shadow-(--shadow-soft) outline-border [&_span]:text-(--shiki-light);
   }
 
   html[data-theme="dark"] .astro-code {

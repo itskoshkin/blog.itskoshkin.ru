@@ -8,7 +8,7 @@ export default async () => {
       type: "div",
       props: {
         style: {
-          background: "#fefbfb",
+          background: "#f5efe4",
           width: "100%",
           height: "100%",
           display: "flex",
@@ -21,17 +21,16 @@ export default async () => {
             props: {
               style: {
                 position: "absolute",
-                top: "-1px",
-                right: "-1px",
-                border: "4px solid #000",
-                background: "#ecebeb",
+                top: "52px",
+                right: "54px",
+                border: "2px solid #d9cbbb",
+                background: "#efe7da",
                 opacity: "0.9",
-                borderRadius: "4px",
+                borderRadius: "8px",
                 display: "flex",
                 justifyContent: "center",
-                margin: "2.5rem",
-                width: "88%",
-                height: "80%",
+                width: "86%",
+                height: "76%",
               },
             },
           },
@@ -39,14 +38,13 @@ export default async () => {
             type: "div",
             props: {
               style: {
-                border: "4px solid #000",
-                background: "#fefbfb",
-                borderRadius: "4px",
+                border: "2px solid #d9cbbb",
+                background: "#fcfbf7",
+                borderRadius: "8px",
                 display: "flex",
                 justifyContent: "center",
-                margin: "2rem",
-                width: "88%",
-                height: "80%",
+                width: "86%",
+                height: "76%",
               },
               children: {
                 type: "div",
@@ -77,14 +75,25 @@ export default async () => {
                           {
                             type: "p",
                             props: {
-                              style: { fontSize: 72, fontWeight: "bold" },
+                              style: {
+                                fontFamily: "Canela Deck, Georgia",
+                                fontSize: 92,
+                                fontWeight: 400,
+                                lineHeight: 1,
+                                color: "#35312b",
+                              },
                               children: SITE.title,
                             },
                           },
                           {
                             type: "p",
                             props: {
-                              style: { fontSize: 28 },
+                              style: {
+                                fontFamily: "Canela Text, Georgia",
+                                fontSize: 34,
+                                fontWeight: 300,
+                                color: "#756f66",
+                              },
                               children: SITE.desc,
                             },
                           },
@@ -99,12 +108,14 @@ export default async () => {
                           justifyContent: "flex-end",
                           width: "100%",
                           marginBottom: "8px",
+                          fontFamily: "Canela Text, Georgia",
                           fontSize: 28,
+                          color: "#8b1e52",
                         },
                         children: {
                           type: "span",
                           props: {
-                            style: { overflow: "hidden", fontWeight: "bold" },
+                            style: { overflow: "hidden", fontWeight: 500 },
                             children: new URL(SITE.website).hostname,
                           },
                         },
